@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="VeevaSuite" parallel="tests" thread-count="3">
+    <test name="CoreProduct">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.yourorg.cp.runners.CPTestRunner"/>
+        </classes>
+    </test>
+<!--    <test name="DP1">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+<!--        <classes>-->
+<!--            <class name="com.yourorg.dp1.runners.DP1TestRunner"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="DP2">-->
+<!--        <parameter name="browser" value="chrome"/>-->
+<!--        <classes>-->
+<!--            <class name="com.yourorg.dp2.runners.DP2TestRunner"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
