@@ -1,4 +1,4 @@
-package com.veeva.automation.utils;
+package com.yourorg.framework.utils;
 import java.nio.file.*;
 import java.io.IOException;
 public class FileUtils {

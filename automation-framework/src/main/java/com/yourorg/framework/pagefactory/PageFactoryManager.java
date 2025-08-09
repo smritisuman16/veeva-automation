@@ -1,4 +1,4 @@
-package com.veeva.automation.pagefactory;
+package com.yourorg.framework.pagefactory;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.WebDriver;
 

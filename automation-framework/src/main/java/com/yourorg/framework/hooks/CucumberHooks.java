@@ -1,6 +1,6 @@
-package com.veeva.automation.hooks;
-import com.veeva.automation.driver.DriverFactory;
-import com.veeva.automation.config.ConfigReader;
+package com.yourorg.framework.hooks;
+import com.yourorg.framework.driver.DriverFactory;
+import com.yourorg.framework.config.ConfigReader;
 import io.cucumber.java.Before;
 import io.cucumber.java.After;
 

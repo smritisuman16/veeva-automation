@@ -1,7 +1,7 @@
 package com.yourorg.cp.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.veeva.automation.driver.DriverFactory;
+import com.yourorg.framework.driver.*;
 
 public class CPHomePage {
     @FindBy(css = "nav .shop") private WebElement shopMenu;

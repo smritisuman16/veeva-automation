@@ -1,4 +1,4 @@
-package com.veeva.automation.config;
+package com.yourorg.framework.config;
 import java.io.InputStream;
 import java.util.Properties;
 
