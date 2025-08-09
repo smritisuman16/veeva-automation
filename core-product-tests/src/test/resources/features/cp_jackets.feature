@@ -5,4 +5,4 @@ Feature: CP Jackets extraction
     When I navigate to the Men's Jackets section
     And I collect jacket details from all pages
     Then I save the details to a text file
-    And I attach the file to the test report
+#    And I attach the file to the test report
