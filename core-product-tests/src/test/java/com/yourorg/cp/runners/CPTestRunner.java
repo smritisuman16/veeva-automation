@@ -12,8 +12,10 @@ import org.testng.annotations.DataProvider;
         },
         plugin = {
                 "pretty",
-                "json:target/cucumber.json"
-        }
+                "json:target/cucumber.json",
+                "html:target/cucumber-html-report.html"
+        },
+        tags="@videoFeed"
 
 )
 public class CPTestRunner extends AbstractTestNGCucumberTests {
