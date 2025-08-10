@@ -20,11 +20,7 @@ public class ReportManager {
         if (driver != null && scenario != null) {
             byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             String base64Screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-
-            // Attach to cucumber report
             scenario.attach(screenshotBytes, "image/png", message);
-
-            // Attach to extent report
             ExtentManager.getTest().info(message)
                     .addScreenCaptureFromBase64String(base64Screenshot, message);
         } else {

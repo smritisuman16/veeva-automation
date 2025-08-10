@@ -4,6 +4,7 @@ import com.yourorg.cp.pages.CPLocators;
 import com.yourorg.framework.driver.DriverFactory;
 import com.yourorg.framework.pagefactory.PageFactoryManager;
 import com.yourorg.framework.utils.BaseUtils;
+import com.yourorg.framework.utils.ReportManager;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,13 +28,14 @@ public class VideoFeedSteps extends BaseUtils {
 
         Actions actions = new Actions(driver);
         actions.moveToElement(locators.menu_item).perform();
-
+        ReportManager.logWithScreenshot("User clicks on News & Features");
         click(locators.news_and_features);
     }
 
     @Then("I count total number of video feeds")
     public void i_count_total_number_of_video_feeds() {
         System.out.println("Total Video Feeds: " + locators.videoFeeds.size());
+        ReportManager.logWithScreenshot("Total Video Feeds: "+locators.videoFeeds.size());
     }
 
     @Then("I count video feeds older than or equal to 3 days")
@@ -53,5 +55,6 @@ public class VideoFeedSteps extends BaseUtils {
         }
 
         System.out.println("Video Feeds older than or equal to 3 days: " + countOld);
+        ReportManager.logWithScreenshot("Video Feeds older than or equal to 3 days: " + countOld);
     }
 }

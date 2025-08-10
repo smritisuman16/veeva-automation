@@ -15,7 +15,8 @@ import org.testng.annotations.DataProvider;
                 "json:target/cucumber.json",
                 "html:target/cucumber-html-report.html"
         },
-        tags="@videoFeed"
+        tags=""
+
 
 )
 public class CPTestRunner extends AbstractTestNGCucumberTests {

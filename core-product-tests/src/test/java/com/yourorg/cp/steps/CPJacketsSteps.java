@@ -3,7 +3,6 @@ import com.aventstack.extentreports.Status;
 import com.yourorg.cp.pages.CPLocators;
 import com.yourorg.framework.pagefactory.*;
 import com.yourorg.framework.driver.*;
-import com.yourorg.framework.config.*;
 import com.yourorg.framework.reporting.ExtentManager;
 import com.yourorg.framework.utils.*;
 import io.cucumber.java.Scenario;
@@ -11,7 +10,8 @@ import io.cucumber.java.en.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -38,7 +38,12 @@ public class CPJacketsSteps extends BaseUtils{
         driver.get("https://www.nba.com/warriors/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         ReportManager.logWithScreenshot("Navigated to CP Warriors");
-
+        try{
+            if(locators.acceptCookies.isDisplayed()){
+                click(locators.acceptCookies);
+            }
+        } catch (Exception ignored) {
+        }
         locators.closePopup.click();
     }
 
@@ -58,7 +63,10 @@ public class CPJacketsSteps extends BaseUtils{
 
     @When("I collect jacket details from all pages")
     public void i_collect_jacket_details_from_all_pages() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        Wait<WebDriver> wait = new FluentWait<>(driver)
+                .pollingEvery(Duration.ofSeconds(60))
+                .withTimeout(Duration.ofSeconds(5))
+                .ignoring(StaleElementReferenceException.class);
         boolean hasNextPage = true;
 
         while (hasNextPage) {
@@ -113,7 +121,7 @@ public class CPJacketsSteps extends BaseUtils{
 
     @Then("I attach the file to the test report")
     public void i_attach_the_file_to_the_test_report(Scenario scenario) throws IOException {
-        byte[] fileContent = Files.readAllBytes(Paths.get(filePath));
+        byte[] fileContent = Files.readAllBytes(Paths.get(System.getProperty("user.dir"), "target", "jackets-info.txt"));
         scenario.attach(fileContent, "text/plain", "jackets-info.txt");
         ExtentManager.getTest().log(Status.INFO, "Jacket Info:\n" + fileContent);
     }

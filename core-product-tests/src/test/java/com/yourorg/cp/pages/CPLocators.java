@@ -27,6 +27,8 @@ public class CPLocators {
     public WebElement news_and_features;
     @FindBy(xpath="//*[@class='brand-font tile-article-link-wrapper TileArticle_tileArticleLinkWrapper__5XFdV']")
     public List<WebElement> videoFeeds;
+    @FindBy(xpath="//button[text()='I Accept']")
+    public WebElement acceptCookies;
 
 
 
